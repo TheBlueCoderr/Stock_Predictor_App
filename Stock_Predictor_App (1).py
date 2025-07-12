@@ -47,6 +47,10 @@ end=st.text_input('Enter End Date(YYYY-MM-DD)','2024-01-01')
 
 data = yf.download(stock, start ,end)
 
+if data.empty:
+    st.error("No data found! Please check the stock symbol or date range.")
+    st.stop()
+
 st.subheader('Stock Data')
 st.write(data)
 
